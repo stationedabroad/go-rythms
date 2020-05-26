@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"sort"
 	"time"
 )
 
@@ -16,21 +17,16 @@ func randomArr(size int) []int {
 
 func main() {
 	// array creation removed from perf timing
-	A := randomArr(100000)
-	// A := [...]int{5,2,4,6,1,3}
+	A := randomArr(1000000000)
+	// A := []int{5,2,4,6,1,3}
 	// fmt.Println(A)
 	start := time.Now()
 
-	for j := 1; j < len(A); j++ {
-		key := A[j]
-		i := j - 1
-		for i >= 0 && A[i] > key {
-			A[i+1] = A[i]
-			i -= 1
-		}
-		A[i+1] = key
-	}
+	// sort.Slice(A, func(i, j int) bool {
+	// 	return A[i] > A[j]
+	// })
 
+	sort.Ints(A)
 	elapsed := time.Since(start)
 	// fmt.Println(A)
 	fmt.Printf("Elapsed time: %v for arrays length: %d \n", elapsed.Seconds(), len(A))
