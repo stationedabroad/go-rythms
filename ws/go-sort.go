@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-func randomArr(size int) []int {
+func randomIntArr(size int) []int {
 	A := make([]int, size)
 	for i := range A {
 		A[i] = rand.Intn(100)
@@ -17,7 +17,7 @@ func randomArr(size int) []int {
 
 func main() {
 	// array creation removed from perf timing
-	A := randomArr(1000000000)
+	A := randomIntArr(1000000000)
 	// A := []int{5,2,4,6,1,3}
 	// fmt.Println(A)
 	start := time.Now()
